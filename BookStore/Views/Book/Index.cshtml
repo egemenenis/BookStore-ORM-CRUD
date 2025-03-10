@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+<h1>Book List</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Price</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.ISBN</td>
+                <td>@book.Price</td>
+                <td>@book.Author.Name</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Book", new { id = book.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Book", new { id = book.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create", "Book")" class="btn btn-primary">Add New Book</a>
